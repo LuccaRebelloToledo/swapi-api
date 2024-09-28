@@ -24,7 +24,8 @@ def handle_invalid_usage(error):
 
 @app.errorhandler(Exception)
 def handle_internal_server_error(error):
-    return create_api_error_message(str(error), INTERNAL_SERVER_ERROR)
+    print(error)
+    return create_api_error_message('Internal Server Error', INTERNAL_SERVER_ERROR)
 
 with app.app_context():
     db.create_all()
