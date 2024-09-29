@@ -6,7 +6,7 @@ from app.errors.app_error import AppError
 from app.utils.api_response import create_api_error_message
 from app.utils.http_status_code import INTERNAL_SERVER_ERROR
 
-from app.controllers import status, people
+from app.controllers import status, people, starship
 
 app = Flask(__name__)
 
@@ -17,6 +17,7 @@ db.init_app(app)
 
 app.register_blueprint(status.bp)
 app.register_blueprint(people.bp)
+app.register_blueprint(starship.bp)
 
 @app.errorhandler(AppError)
 def handle_invalid_usage(error):
