@@ -1,7 +1,8 @@
 from flask import Blueprint
 
-from app.utils.http_status_code import OK, CREATED, NO_CONTENT
 from app.utils.api_response import create_api_response
+from app.utils.http_status_code import OK, CREATED, NO_CONTENT
+from app.utils.request import get_page_number
 
 from app.services.people import find_all, find_by_id, save, delete
 
@@ -9,7 +10,8 @@ bp = Blueprint('people', __name__, url_prefix='/peoples')
 
 @bp.get('/')
 def fetch_all():
-    data = find_all()
+    page = get_page_number()
+    data = find_all(page)
 
     return create_api_response(data, OK)
 

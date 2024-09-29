@@ -9,8 +9,8 @@ from app.utils.http_status_code import NOT_FOUND, CONFLICT
 
 resource = 'people'
 
-def find_all():
-    return get_swapi_resource(resource)
+def find_all(page: int):
+    return get_swapi_resource(resource, params={'page': page})  
 
 def get_record_by_id(id: int):
     record = get_record(People, record_id=id)
