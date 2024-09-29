@@ -26,7 +26,7 @@ def save(id: int):
     record = get_record_by_id(id)
 
     if record is not None:
-        raise AppError(app_error_types[resource]['alreadyExists'](id), CONFLICT)
+        raise AppError(app_error_types['alreadyExists'](resource, id), CONFLICT)
     
     response = get_swapi_resource(resource, id)
     saved_record = save_record(People, response, id)
@@ -37,6 +37,6 @@ def delete(id: int):
     record = get_record(People, id)
 
     if record is None:
-        raise AppError(app_error_types[resource]['notFound'](id), NOT_FOUND)
+        raise AppError(app_error_types['notFound'](resource, id), NOT_FOUND)
 
     delete_record(record)
