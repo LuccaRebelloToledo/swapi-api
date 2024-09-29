@@ -1,4 +1,4 @@
-from app.utils.swapi import get_swapi_resource, get_swapi_resource_by_id
+from app.utils.swapi import get_swapi_resource
 
 from app.utils.sql_alchemy import get_record, save_record, delete_record
 from app.models.people import People
@@ -13,14 +13,14 @@ def find_all():
     return get_swapi_resource(resource)
 
 def get_record_by_id(id: int):
-    record = get_record(People, id)
+    record = get_record(People, record_id=id)
 
     return record if record is not None else None
 
 def find_by_id(id: int):
     record = get_record_by_id(id)
 
-    return record if record is not None else get_swapi_resource_by_id(resource, id)
+    return record.to_dict() if record is not None else get_swapi_resource(resource, id)
 
 def save(id: int):
     record = get_record_by_id(id)
@@ -31,7 +31,7 @@ def save(id: int):
     response = get_swapi_resource(resource, id)
     saved_record = save_record(People, response, id)
     
-    return saved_record
+    return saved_record.to_dict()
 
 def delete(id: int):
     record = get_record(People, id)
