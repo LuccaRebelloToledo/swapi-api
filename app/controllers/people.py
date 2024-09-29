@@ -27,6 +27,6 @@ def save_record(id):
 
 @bp.delete('/<int:id>/delete')
 def delete_record(id):
-    data = delete(id)
+    delete(id)
 
-    return create_api_response(data, NO_CONTENT)
+    return create_api_response(None, NO_CONTENT)
