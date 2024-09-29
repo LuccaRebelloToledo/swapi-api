@@ -6,7 +6,7 @@ from app.utils.request import get_page_number
 
 from app.services.starship import find_all, find_by_id, save, delete
 
-bp = Blueprint('starships', __name__, url_prefix='/starships')
+bp = Blueprint('starship', __name__, url_prefix='/starships')
 
 @bp.get('/')
 def fetch_all():
