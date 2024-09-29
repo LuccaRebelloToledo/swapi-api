@@ -1,5 +1,6 @@
 app_error_types = {
-  'peoples': {
+  'people': {
     'notFound': lambda id: f'People with id {id} not found!',
+    'alreadyExists': lambda id: f'People with id {id} already exists!'
   }
 }

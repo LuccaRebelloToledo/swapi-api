@@ -2,6 +2,8 @@ import requests
 from requests.exceptions import RequestException
 
 from app.errors.app_error import AppError
+from app.errors.app_error_types import app_error_types
+from app.utils.http_status_code import NOT_FOUND
 
 BASE_API_URL = 'https://swapi.dev/api'
 
@@ -16,3 +18,11 @@ def get_swapi_resource(resource: str, param: int = None):
             raise AppError(err.response.text, err.response.status_code)
         else:
             raise AppError(str(err))
+
+def get_swapi_resource_by_id(resource: str, id: int):
+    response = get_swapi_resource(resource, id)
+
+    if response is None or ('detail' in response and response['detail'] == 'Not found'):
+        raise AppError(app_error_types[resource]['notFound'](id), NOT_FOUND)
+    
+    return response
