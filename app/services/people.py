@@ -17,10 +17,10 @@ def get_record_by_id(id: int):
 
     return record if record is not None else None
 
-def find_by_id(id: int, resource: str):
+def find_by_id(id: int):
     record = get_record_by_id(id)
 
-    return record if record is not None else get_swapi_resource_by_id(id, resource)
+    return record if record is not None else get_swapi_resource_by_id(resource, id)
 
 def save(id: int):
     record = get_record_by_id(id)
