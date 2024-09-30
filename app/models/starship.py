@@ -2,6 +2,7 @@ from app.utils.json import loads, process_kwargs
 
 from app.utils.database import db
 
+resource = 'starships'
 keys_to_process = ['films', 'pilots']
 
 class Starship(db.Model):

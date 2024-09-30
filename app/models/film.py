@@ -2,10 +2,11 @@ from app.utils.json import loads, process_kwargs
 
 from app.utils.database import db
 
+resource = 'films'
 keys_to_process = ['species', 'starships', 'vehicles', 'characters', 'planets']
 
 class Film(db.Model):
-    __tablename__ = 'films'
+    __tablename__ = resource
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
