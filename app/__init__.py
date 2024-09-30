@@ -7,7 +7,7 @@ from app.errors.app_error import AppError
 from app.utils.api_response import create_api_error_message
 from app.utils.http_status_code import INTERNAL_SERVER_ERROR
 
-from app.controllers import status, people, film, starship, vehicle, specie, planet
+from app.controllers import status, people, film, starship, vehicle, specie, planet, favorite
 
 app = Flask(__name__)
 
@@ -23,6 +23,7 @@ app.register_blueprint(starship.bp)
 app.register_blueprint(vehicle.bp)
 app.register_blueprint(specie.bp)
 app.register_blueprint(planet.bp)
+app.register_blueprint(favorite.bp)
 
 @app.errorhandler(AppError)
 def handle_invalid_usage(error):

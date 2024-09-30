@@ -1,5 +1,8 @@
 from app.utils.database import db
 
+def get_all_records(model):
+    return model.query.all()
+
 def get_record(model, record_id: str):
     record = model.query.get(record_id)
 
