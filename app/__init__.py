@@ -1,5 +1,6 @@
 from flask import Flask
 
+from app.config.sqlite import DATABASE_URI, TRACK_MODIFICATIONS
 from app.utils.database import db
 
 from app.errors.app_error import AppError
@@ -10,8 +11,8 @@ from app.controllers import status, people, film, starship, vehicle, specie, pla
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///swapi.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = TRACK_MODIFICATIONS
 
 db.init_app(app)
 
