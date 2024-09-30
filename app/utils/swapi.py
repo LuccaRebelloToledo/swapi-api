@@ -16,6 +16,6 @@ def get_swapi_resource(resource: str, id: int = None, params: dict = None):
         if err.response is not None:
             response_json = loads(err.response.text)
             detail_message = response_json.get('detail', response_json)
-            raise AppError(detail_message if detail_message is not None else err.response.text, err.response.status_code)
+            raise AppError(f'{resource.capitalize()} - {detail_message}' if detail_message is not None else err.response.text, err.response.status_code)
         else:
             raise AppError(str(err))
