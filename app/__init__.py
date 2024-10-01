@@ -3,6 +3,7 @@ from flask import Flask
 from app.config.sqlite import DATABASE_URI, TRACK_MODIFICATIONS
 from app.utils.database import db
 
+from marshmallow import ValidationError
 from app.errors.app_error import AppError
 from app.utils.api_response import create_api_error_message
 from app.utils.http_status_code import INTERNAL_SERVER_ERROR
@@ -28,6 +29,10 @@ app.register_blueprint(favorite.bp)
 @app.errorhandler(AppError)
 def handle_invalid_usage(error):
     return create_api_error_message(error.message, error.status_code)
+
+@app.errorhandler(ValidationError)
+def handle_invalid_usage(error):
+    return create_api_error_message(error.messages)
 
 @app.errorhandler(Exception)
 def handle_internal_server_error(error):
