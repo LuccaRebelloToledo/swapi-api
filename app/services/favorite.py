@@ -20,7 +20,7 @@ def find_all():
     data = get_all_records(Favorite)
 
     if not data:
-        raise AppError(app_error_types[resource]['notFound'], NOT_FOUND)
+        raise AppError(app_error_types['notFound'](resource), NOT_FOUND)
 
     return [item.to_dict() for item in data]
 
