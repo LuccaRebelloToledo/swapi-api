@@ -14,16 +14,16 @@ bodySchema = BodySchema()
 
 @bp.get('/')
 def fetch_all():
-    data =  find_all()
+    data = find_all()
 
     return create_api_response(data, OK)
 
 @bp.post('/save')
 def save_record():
     data = request.get_json()
-    
+
     bodySchema.load(data)
 
-    record =  save(data)
+    record = save(data)
 
     return create_api_response(record, CREATED)
