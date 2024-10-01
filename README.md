@@ -40,7 +40,7 @@ $ flask run
 ```
 
 ### API Documentation
-To access the documentation, you can use Insomnia by importing the JSON file located in the `insomnia` folder in Insomnia.
+To access the documentation, you can use Insomnia by importing the JSON file located in the `insomnia` folder.
 
 ### Contributing
 Contributions are always welcome. If you find any issues or have any suggestions, feel free to open an issue or submit a pull request.
