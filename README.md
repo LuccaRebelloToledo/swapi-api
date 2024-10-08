@@ -12,6 +12,11 @@ This API consumes the Star Wars API, which is the world's first quantified and p
 # Clone the repository
 $ git clone https://github.com/LuccaRebelloToledo/swapi-api.git
 
+# Navigate to the project directory
+$ cd swapi-api
+```
+
+```sh
 # Create a Virtual Environment
 
 ## Windows
@@ -29,7 +34,9 @@ $ python3 -m venv .venv
 
 # Activate the environment
 $ source .venv/bin/activate
+```
 
+```sh
 # Install dependencies
 $ pip install -r requirements.txt
 
